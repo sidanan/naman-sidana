@@ -1,47 +1,70 @@
 package exercise1;
 
-/**
- * A class that fills a hand of 7 cards with random Card Objects and then asks the user to pick a card.
- * It then searches the array of cards for the match to the user's card. 
- * To be used as starting code in Exercise
- *
- 
- * @author NamanSidana May 26, 2023 
- */
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * A class that randomly generates a hand of 7 cards and asks the user to pick a card.
+ * It then searches the array of cards for a match to the user's card.
+ * To be used as starting code in Exercise.
+ * 
+ * @author naman Sidana (May 26, 2023)
+ */
 public class CardTrick {
+
     public static void main(String[] args) {
+        Card[] hand = new Card[7];
         Random random = new Random();
 
-        int value = random.nextInt(13) + 1;
+        // Generate a random hand of cards
+        for (int i = 0; i < hand.length; i++) {
+            Card card = new Card();
+            card.setValue(random.nextInt(13) + 1);
+            card.setSuit(Card.SUITS[random.nextInt(4)]);
+            hand[i] = card;
+        }
 
-        System.out.print("Enter card value (1-10, 11 for jack, 12 for queen, and 13 for king): ");
+        // Ask the user to pick a card
         Scanner scanner = new Scanner(System.in);
-        int userValue = scanner.nextInt();
+        System.out.print("Enter the value of your card: ");
+        int value = scanner.nextInt();
+        System.out.print("Enter the suit of your card (1-4): ");
+        int suit = scanner.nextInt();
 
-        System.out.print("Enter card suit (1 for hearts, 2 for diamonds, 3 for clubs, and 4 for spades): ");
-        int userSuit = scanner.nextInt();
+        Card userCard = new Card();
+        userCard.setValue(value);
+        userCard.setSuit(Card.SUITS[suit - 1]);
 
-        Card userCard = new Card(userValue, userSuit);
-        Card randomCard = new Card(value, random.nextInt(4));
+        // Search for a match in the hand of cards
+        boolean matchFound = false;
+        for (Card card : hand) {
+            if (card.equals(userCard)) {
+                matchFound = true;
+                break;
+            }
+        }
 
-        if (userCard.equals(randomCard)) {
-            System.out.println("Congratulations! You have a match.");
-            randomCard.printInfo();
+        // Print the result
+        if (matchFound) {
+            printInfo();
         } else {
-            System.out.println("No match found.");
+            System.out.println("Sorry, no match found.");
         }
     }
 
-
     /**
-     * A simple method to print out personal information. Follow the instructions to 
-     * replace this information with your own.
-     * @author Paul Bonenfant Jan 2022
+     * Prints information about the matching card.
      */
-    private static void printInfo() {
+    public static void printInfo() {
+        // Add implementation here to print card information
+    }
+}
+
+    //Sehajpreet singh May 26 2023
+* // I'm done!
+private static void printInfo() {
+
+
     
         System.out.println("Congratulations, you guessed right!");
         System.out.println();
