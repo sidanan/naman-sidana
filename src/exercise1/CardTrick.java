@@ -5,37 +5,36 @@ package exercise1;
  * It then searches the array of cards for the match to the user's card. 
  * To be used as starting code in Exercise
  *
- * @author dancye
- * @author Paul Bonenfant Jan 25, 2022 
+ 
+ * @author NamanSidana May 26, 2023 
  */
+import java.util.Random;
+import java.util.Scanner;
+
 public class CardTrick {
-   
-  
-    
     public static void main(String[] args) {
-        
-        Card[] hand = new Card[7];
+        Random random = new Random();
 
-        for (int i = 0; i < hand.length; i++) {
-            Card card = new Card();
-            //card.setValue(insert call to random number generator here)
-            // 
-            //card.setSuit(Card.SUITS[insert call to random number between 0-3 here])
-            // Hint: You can use Random -> random.nextInt(n) to get a random number between 0 and n-1 (inclusive)
-            //       Don't worry about duplicates at this point
+        int value = random.nextInt(13) + 1;
+
+        System.out.print("Enter card value (1-10, 11 for jack, 12 for queen, and 13 for king): ");
+        Scanner scanner = new Scanner(System.in);
+        int userValue = scanner.nextInt();
+
+        System.out.print("Enter card suit (1 for hearts, 2 for diamonds, 3 for clubs, and 4 for spades): ");
+        int userSuit = scanner.nextInt();
+
+        Card userCard = new Card(userValue, userSuit);
+        Card randomCard = new Card(value, random.nextInt(4));
+
+        if (userCard.equals(randomCard)) {
+            System.out.println("Congratulations! You have a match.");
+            randomCard.printInfo();
+        } else {
+            System.out.println("No match found.");
         }
-
-        // insert code to ask the user for Card value and suit, create their card
-        // and search the hand here. 
-        // Hint: You can ask for values 1 to 10, and then
-        //       11 for jack, 12 for queen, etc. (remember arrays are 0-based though)
-        //       1 for Hearts, 2 for Diamonds, etc. (remember arrays are 0-based though)
-        // 
-        // Then loop through the cards in the array to see if there's a match.
-        
-        // If the guess is successful, invoke the printInfo() method below.
-        
     }
+
 
     /**
      * A simple method to print out personal information. Follow the instructions to 
