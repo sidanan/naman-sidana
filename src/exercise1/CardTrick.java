@@ -60,8 +60,7 @@ public class CardTrick {
     }
 }
 
-    //Sehajpreet singh May 26 2023
-* // I'm done!
+    //Naman Sidana May 26 2023
 private static void printInfo() {
 
 
