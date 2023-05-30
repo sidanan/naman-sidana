@@ -61,7 +61,9 @@ public class CardTrick {
 }
 
     //Naman Sidana May 26 2023
+<<<<<<< HEAD
 //I am done
+>>>>>>> origin/naman_sidana_ex1
 private static void printInfo() {
 
 
